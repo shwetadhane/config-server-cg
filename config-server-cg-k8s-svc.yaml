@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: config-server-cg
+  namespace: default
+  labels:
+    app: config-server-cg
+spec:
+  selector:
+    app: config-server-cg
+  ports:
+    - port: 8888
+      targetPort: 8888
+  type: NodePort

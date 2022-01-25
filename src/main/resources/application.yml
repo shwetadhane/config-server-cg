@@ -1,0 +1,23 @@
+spring:
+  zipkin:
+    enabled: false
+    baseUrl: http://localhost:9411/
+  application:
+    name: config-server-cg
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/shwetadhane/config-file.git
+    consul:
+      host: consul-consul-server
+      port: 8500
+server:
+  port: 8888
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: config-server-cg
+  namespace: default
+  labels:
+    app: config-server-cg
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: config-server-cg
+      labels:
+        app: config-server-cg
+        role: rolling-update
+    spec:
+      containers:
+        - name: config-server-cg
+          image: pradnyilk/config-server-cg:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8888
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: default
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: config-server-cg
